@@ -102,8 +102,7 @@ def getBasicDetails():
     time = getLteStats()
     print(f'Battery:\t{bats[0]}%\nBattery Status:\t{bats[1]}\nNo of Users:\t{devc}\nData usage\t{usg} MB in {time}')
 
-
-if __name__ == '__main__':
+def main():
     fire.Fire({
       'devices': getDevices,
       'speed': getBandwidth,
@@ -111,3 +110,6 @@ if __name__ == '__main__':
       'usage':getWanInfo,
       'device':deviceDetails
   })
+
+if __name__ == '__main__':
+    main()    

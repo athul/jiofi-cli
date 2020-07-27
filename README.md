@@ -5,16 +5,25 @@ Jiofi-CLI is a Command Line Interface to check your Jiofi Network from your term
 
 ## Using it
 
-- Clone this Repo
-- Install the Dependencies with `pip install -r requirements.txt`
-- Run the program `python main.py` . You'll be welcomed by the help section
+Install `jiofi` with `pip`. It works on Python version >=3.6.
+
+```bash
+pip install jiofi --user
+```
+
+Once you installed it, run it by typing `jiofi` in your terminal.
+
+```
+$ jiofi
+```
+You'll be welcomed by the help page of jiofi 😄
 
 ```text
 NAME
-    main.py
+    jiofi
 
 SYNOPSIS
-    main.py COMMAND
+    jiofi COMMAND
 
 COMMANDS
     COMMAND is one of the following:
@@ -46,6 +55,7 @@ This is under [MIT License](/LICENSE). All Pull Requests are welcome. If you fin
 - Python
   - `requests` for HTTP requests
   - `fire` for CLI interface
+  - `tabulate` for Tables
 
 #### Tested on
 
