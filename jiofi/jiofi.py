@@ -15,9 +15,10 @@ def getDevices(log:bool = True):
     """Prints a tabular view of all the connected devices in the network 
     """
     form = {'Page':'GetLANInfo'}
-    res = requests.post(URL,form)
-    if res.status_code == 404:
-        print("Please connect to a Jiofi Network")
+    try:
+        res = requests.post(URL,form)
+    except requests.ConnectionError:
+        print("Connect to a Jiofi Network to get the details")
         sys.exit(1)
     data = res.json()
     no_devices = data['client_count']
@@ -32,9 +33,10 @@ def getBandwidth():
     """Prints the Current upload and download speed
     """
     form = {'Page':'GetSystemPerformance'}
-    res = requests.post(URL,form)
-    if res.status_code == 404:
-        print("Please connect to a Jiofi Network")
+    try:
+        res = requests.post(URL,form)
+    except requests.ConnectionError:
+        print("Connect to a Jiofi Network to get the details")
         sys.exit(1)
     data = res.json()
     curr_up = data['uplink_cur_usg']
@@ -44,9 +46,10 @@ def getBandwidth():
 
 def getLteStats():
     form = {'Page':'GetLTEStatus'}
-    res = requests.post(URL,form)
-    if res.status_code == 404:
-        print("Please connect to a Jiofi Network")
+    try:
+        res = requests.post(URL,form)
+    except requests.ConnectionError:
+        print("Connect to a Jiofi Network to get the details")
         sys.exit(1)
     data = res.json()
     return (data['connection_time'])
@@ -56,9 +59,10 @@ def deviceDetails(log:bool = True):
     """Get Details of the device, Battery Charge, Battery State, Phone number or MSISDN
     """
     form = {'Page':'GetDeviceDetails'}
-    res = requests.post(URL,form)
-    if res.status_code == 404:
-        print("Please connect to a Jiofi Network")
+    try:
+        res = requests.post(URL,form)
+    except requests.ConnectionError:
+        print("Connect to a Jiofi Network to get the details")
         sys.exit(1)
     data = res.json()
     battery = data['battery_level']
@@ -73,9 +77,10 @@ def getWanInfo(log:bool = True):
     """Get Data usage in Upload and Download data in <time>
     """
     form = {'Page':'GetWANInfo'}
-    res = requests.post(URL,form)
-    if res.status_code == 404:
-        print("Please connect to a Jiofi Network")
+    try:
+        res = requests.post(URL,form)
+    except requests.ConnectionError:
+        print("Connect to a Jiofi Network to get the details")
         sys.exit(1)
     data = res.json()
     data_upl = data['total_data_used_ulink']
