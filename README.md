@@ -2,6 +2,11 @@
 
 Jiofi-CLI is a Command Line Interface to check your Jiofi Network from your terminal than using the web interface. It only shows very specific details like battery details, data usage and devices connected.
 
+## Tested on
+
+- Jiofi4
+
+> Open an Issue or PR to contribute to and the testing of other Models
 
 ## Using it
 
@@ -55,8 +60,4 @@ This is under [MIT License](/LICENSE). All Pull Requests are welcome. If you fin
 - Python
   - `requests` for HTTP requests
   - `fire` for CLI interface
-  - `tabulate` for Tables
-
-#### Tested on
-
-- Jiofi4
+  - `rich` for Tables and Colors
