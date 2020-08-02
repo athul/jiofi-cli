@@ -1,5 +1,5 @@
 """
-Jiofi-cli is a CLI for fetching data from your Jiofi network without going to Jiofi Web DashBoard. 
+Jiofi-cli is a CLI for fetching data from your Jiofi network without going to Jiofi Web DashBoard.
 
 :authors: Athul Cyriac Ajay <athul8720@gmail.com>
 """
@@ -16,14 +16,13 @@ URL = "http://jiofi.local.html/cgi-bin/qcmap_web_cgi"
 
 
 def getDevices(log:bool = True):
-    """Prints a tabular view of all the connected devices in the network 
+    """Prints a tabular view of all the connected devices in the network
     """
     form = {'Page':'GetLANInfo'}
     try:
         res = requests.post(URL,form)
     except requests.ConnectionError or NewConnectionError or MaxRetryError or socket.gaierror as err:
         print("Connect to a Jiofi Network to get the details")
-        print(err)
         exit(1)
     data = res.json()
     no_devices = data['client_count']
@@ -31,10 +30,7 @@ def getDevices(log:bool = True):
     if log is False:
         return no_devices
     else:
-        table = Table(title="Devices Connected")
-        table.add_column()
-        table.add_column("Released", justify="right", style="cyan",    no_wrap=True)
-        table = Table(title="Devices Connected")
+        table = Table(title=f"Devices Connected: {no_devices}")
         table.add_column("Name", justify="center", style="cyan", no_wrap=True)
         table.add_column("IPV4", justify="center", style="green",  no_wrap=True)
         table.add_column("IPV6", justify="center", style="magenta",    no_wrap=True)
@@ -90,7 +86,7 @@ def deviceDetails(log:bool = True):
         battery_status = f"[green]{status}[/green]"
     phone = data['msisdn']
     if int(battery) >= 50:
-        battery = f"[sea_green2]{battery}%[/sea_green2]" 
+        battery = f"[sea_green2]{battery}%[/sea_green2]"
     else:
         battery = f"[turquoise2]{battery}%[/turquoise2]"
     if log is False:
@@ -140,4 +136,4 @@ def main():
     # getWanInfo()
     # deviceDetails()
 if __name__ == '__main__':
-    main()    
+    main()
